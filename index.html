@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FoodExpress - Order Food Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff7f0;
+    }
+
+    header {
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=crop&h=600&w=1400') no-repeat center center/cover;
+      height: 60vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    nav {
+      background-color: #ff5722;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .menu {
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .item {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .item:hover {
+      transform: translateY(-5px);
+    }
+
+    .item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .item h3 {
+      margin: 15px 0 5px;
+      color: #333;
+    }
+
+    .item p {
+      color: #777;
+    }
+
+    .item button {
+      background-color: #ff5722;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 15px 0;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .item button:hover {
+      background-color: #e64a19;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>FoodExpress</h1>
+    <p>Fast Delivery, Fresh Meals</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Menu</a>
+    <a href="#">Offers</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <section class="menu">
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1604917877934-07d8d248d396?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pizza">
+      <h3>Cheese Pizza</h3>
+      <p>$12.99</p>
+      <button>Order Now</button>
+    </div>
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Burger">
+      <h3>Veggie Burger</h3>
+      <p>$9.49</p>
+      <button>Order Now</button>
+    </div>
+    <div class="item">
+      <img src="https://images.unsplash.com/photo-1662197480393-2a82030b7b83?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pasta">
+      <h3>Italian Pasta</h3>
+      <p>$11.59</p>
+      <button>Order Now</button>
+    </div>
+    <div class="item">
+      <img src="https://plus.unsplash.com/premium_photo-1690263583116-c13c965cfcbb?q=80&w=1930&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Salad">
+      <h3>Healthy Salad</h3>
+      <p>$7.99</p>
+      <button>Order Now</button>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 FoodExpress. All rights reserved.
+  </footer>
+
+</body>
+</html>
