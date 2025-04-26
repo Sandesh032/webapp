@@ -12,20 +12,25 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Delete Previous Deployments (if any)') {
             steps {
                 script {
-                    // Build the Docker image
-                    bat "docker build -t %DOCKER_IMAGE% ."
+                    bat '''
+                    kubectl delete deployment webapp-deployment --ignore-not-found=true
+                    kubectl delete service webapp-service --ignore-not-found=true
+                    '''
                 }
             }
         }
 
-        stage('Load Docker Image into Minikube') {
+        stage('Build Docker Image in Minikube') {
             steps {
                 script {
-                    // Instead of pushing to a registry, directly load into Minikube
-                    bat "minikube image load %DOCKER_IMAGE%"
+                    // Set environment to Minikube's Docker
+                    bat 'for /f "tokens=*" %%i in (\'minikube docker-env --shell=cmd\') do call %%i'
+
+                    // Now build the Docker image
+                    bat "docker build -t %DOCKER_IMAGE% ."
                 }
             }
         }
@@ -38,10 +43,17 @@ pipeline {
             }
         }
 
-        stage('Access the Web App') {
+        stage('Wait for Deployment') {
             steps {
                 script {
                     bat "kubectl rollout status deployment/webapp-deployment"
+                }
+            }
+        }
+
+        stage('Access the Web App') {
+            steps {
+                script {
                     bat "minikube service webapp-service --url"
                 }
             }
