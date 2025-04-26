@@ -52,15 +52,14 @@ pipeline {
         }
 
 	stage('Access the Web App') {
-    		steps {
-        		script {
-            			bat '''
-            			FOR /F "tokens=*" %%i IN ('kubectl get svc webapp-service -o jsonpath="{.spec.ports[0].nodePort}"') DO SET NODE_PORT=%%i
-            			FOR /F "tokens=*" %%i IN ('minikube ip') DO SET MINIKUBE_IP=%%i
-            			echo WebApp is available at: http://%MINIKUBE_IP%:%NODE_PORT%
-            			'''
-        		}
-    		}
-	}
+	    steps {
+	        script {
+			bat '''
+		        FOR /F "tokens=*" %%i IN ('kubectl get svc webapp-service -o jsonpath="{.spec.ports[0].nodePort}"') DO SET NODE_PORT=%%i
+		        echo WebApp is available at: http://127.0.0.1:%NODE_PORT%
+		        '''
+        	}
+	    }
+    	}
     }
 }
