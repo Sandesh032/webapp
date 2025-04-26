@@ -54,8 +54,7 @@ pipeline {
 	stage('Access the Web App') {
 	    steps {
         	script {
-	            def nodePort = sh(script: "kubectl get svc webapp-service -o jsonpath='{.spec.ports[0].nodePort}'", returnStdout: true).trim()
-	            echo "WebApp is available at: http://127.0.0.1:${nodePort}"
+		    bat "minikube service webapp-service --url"
 	        }
 	    }
 	}
