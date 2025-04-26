@@ -2,32 +2,47 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "webapp"	// docker image name
-        TAG = "latest"
+        DOCKER_IMAGE = 'webapp:latest'
     }
 
     stages {
-        stage('Clone Code') {
+        stage('Checkout') {
             steps {
-                echo "Cloning repository..."
-                checkout scm
+                git 'https://github.com/yourusername/yourrepository.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                echo "Building Docker Image..."
-                dir('mywebapp') {
-                    bat "docker build -t %IMAGE_NAME%:%TAG% ."
+                script {
+                    // Build the Docker image
+                    bat "docker build -t %DOCKER_IMAGE% ."
+                }
+            }
+        }
+
+        stage('Load Docker Image into Minikube') {
+            steps {
+                script {
+                    // Instead of pushing to a registry, directly load into Minikube
+                    bat "minikube image load %DOCKER_IMAGE%"
                 }
             }
         }
 
         stage('Deploy to Kubernetes') {
             steps {
-                echo "Deploying to Kubernetes..."
-                dir('mywebapp') {
+                script {
                     bat "kubectl apply -f deployment.yaml"
+                }
+            }
+        }
+
+        stage('Access the Web App') {
+            steps {
+                script {
+                    bat "kubectl rollout status deployment/webapp-deployment"
+                    bat "minikube service webapp-service --url"
                 }
             }
         }

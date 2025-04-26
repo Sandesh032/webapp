@@ -1,31 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-html
+  name: webapp-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: simple-html
+      app: webapp
   template:
     metadata:
       labels:
-        app: simple-html
+        app: webapp
     spec:
       containers:
-      - name: nginx
+      - name: webapp
         image: webapp:latest
-        imagePullPolicy: Never
         ports:
         - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: simple-html-service
+  name: webapp-service
 spec:
   selector:
-    app: simple-html
+    app: webapp
   ports:
     - protocol: TCP
       port: 80
