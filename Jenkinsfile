@@ -54,7 +54,7 @@ pipeline {
 	stage('Access the Web App') {
 	    steps {
         	script {
-		    bat "minikube service webapp-service --url"
+		    echo ❗ Because you are using a Docker driver on windows, the terminal needs to be open to run it.
 	        }
 	    }
 	}
