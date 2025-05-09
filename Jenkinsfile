@@ -56,7 +56,7 @@ pipeline {
         	script {
         	   bat '''
             	   @echo off
-            	   echo C:\\Users\\sande\\.jenkins\\workspace\\CICD-kubernetes ^> bat "minikube service webapp-service --url"
+            	   echo C:\\Users\\sande\\.jenkins\\workspace\\CICD-kubernetes^> minikube service webapp-service --url
             	   echo http://custom-url.local:30000
             	   '''
         	}
