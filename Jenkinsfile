@@ -56,7 +56,7 @@ pipeline {
         	script {
         	   bat '''
             	   @echo off
-            	   echo C:\\Users\\sande\\.jenkins\\workspace\\CICD-kubernetes^> minikube service webapp-service --url
+            	   echo C:\\Users\\sande\\.jenkins\\workspace\\ExamEdge-CICD^> minikube service webapp-service --url
             	   echo http://44.206.233.220/
             	   '''
         	}
