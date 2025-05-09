@@ -52,13 +52,15 @@ pipeline {
         }
 
 	stage('Access the Web App') {
-	    steps {
+ 	   steps {
         	script {
-		    bat'''
-			echo ❗ Because you are using a Docker driver on windows, the terminal needs to be open to run it.
-		    '''
-	        }
-	    }
+        	    bat '''
+            	   @echo off
+            	   echo Opening web application at custom URL:
+            	   echo http://custom-url.local:30000
+            	    '''
+        	}
+    	    }
 	}
     }
 }
